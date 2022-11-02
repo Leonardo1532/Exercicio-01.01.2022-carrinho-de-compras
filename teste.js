@@ -317,19 +317,12 @@ Agora devemos criar funções para um “carrinho de compras” para utilizar ju
 funções anteriores, esse carrinho de compras deve guardar duas informações: o id do
 produto e a quantidade deste produto ;
 
-3. Crie uma função que retorne o valor total de todos os produtos no carrinho;
-
-4. Crie uma função que exiba todos os produtos do carrinho e o valor total de todos os
-produtos;
-*/
-
-
-/*
 1. Crie uma função para adicionar produtos no carrinho, você deve passar o nome do
 produto e a quantidade que deseja adicionar como parâmetro. Essa função deve
 verificar primeiro se já existe esse produto no carrinho, se existir apenas adicione a
 quantidade, se não adicione o produto e a quantidade;
 */
+
 var quantidadeCarrinho = []
 var produtosCarrinho = []
 var indexCarrinho = 0
@@ -403,3 +396,26 @@ function ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido) {
 }
 
 ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido)
+
+
+//3. Crie uma função que retorne o valor total de todos os produtos no carrinho;
+
+var precosCarrinho = []
+var valorTotal
+
+function RetornarValor(){
+    for(var contador = 0; contador < indexCarrinho; contador++){
+        valorTotal = valorTotal + precos[contador]
+    }
+}
+
+
+
+
+
+
+
+/*
+4. Crie uma função que exiba todos os produtos do carrinho e o valor total de todos os
+produtos;
+*/

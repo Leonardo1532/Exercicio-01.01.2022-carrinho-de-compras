@@ -311,3 +311,95 @@ while (continuar == "s") {
         continuar = "n"
     }
 }
+
+/*
+Agora devemos criar funções para um “carrinho de compras” para utilizar junto com as
+funções anteriores, esse carrinho de compras deve guardar duas informações: o id do
+produto e a quantidade deste produto ;
+
+3. Crie uma função que retorne o valor total de todos os produtos no carrinho;
+
+4. Crie uma função que exiba todos os produtos do carrinho e o valor total de todos os
+produtos;
+*/
+
+
+/*
+1. Crie uma função para adicionar produtos no carrinho, você deve passar o nome do
+produto e a quantidade que deseja adicionar como parâmetro. Essa função deve
+verificar primeiro se já existe esse produto no carrinho, se existir apenas adicione a
+quantidade, se não adicione o produto e a quantidade;
+*/
+var quantidadeCarrinho = []
+var produtosCarrinho = []
+var indexCarrinho = 0
+
+var nomesCarrinho = prompt("Insira o nome do produto que deseja adicionar no carrinho")
+var quantidadeProdutos = parseInt(prompt("Insira a quantidade do produto que deseja adicionar no carrinho"))
+
+function AdicionarProdutos(nomesCarrinho, quantidadeProdutos) {
+
+    if (nomesCarrinho == produtosCarrinho[indexCarrinho]) {
+
+        quantidadeProdutos = quantidadeCarrinho[indexCarrinho] + quantidadeProdutos
+
+    } else {
+        produtosCarrinho[indexCarrinho] = nomesCarrinho
+        quantidadeCarrinho[indexCarrinho] = quantidadeProdutos
+    }
+
+    indexCarrinho++
+}
+AdicionarProdutos(nomesCarrinho, quantidadeProdutos)
+
+/*
+2. Crie uma função para excluir um produto do carrinho, essa função deve receber o
+nome do produto e a quantidade que deseja excluir como parâmetro. Se a
+quantidade a se excluir for o total desse produto no carrinho o produto como um
+todo deve ser removido;
+*/
+
+var quantidadeCarrinhoSup = []
+var produtosCarrinhoSup = []
+var indexSuporte = 0
+
+var nomeProdutoExcluido = prompt("Insira o nome do produto para ser excluido")
+var quantidadeProdutoExcluido = prompt("Insira a quantidade do produto para ser excluido")
+
+function ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido) {
+
+    for (var contador = 0; contador < indexCarrinho; contador++) {
+
+        if (nomeProdutoExcluido == produtosCarrinho[contador] && quantidadeProdutoExcluido == quantidadeCarrinho[contador]) {
+
+            quantidadeCarrinho[contador] = 0
+
+            produtosCarrinho[contador] = 0
+
+        }else if(nomeProdutoExcluido == produtosCarrinho[contador]){
+
+            quantidadeCarrinho[contador] = quantidadeCarrinho[contador] - quantidadeProdutoExcluido
+
+        }
+    }
+
+    for(var contador2 = 0; contador2 < indexCarrinho; contador2++){
+
+        if(produtosCarrinho[contador2] != 0){
+            
+            produtosCarrinhoSup[indexSuporte] = produtosCarrinho[contador2]
+
+            quantidadeCarrinhoSup[indexSuporte] = quantidadeCarrinho[contador2]
+
+            indexSuporte++
+
+        }
+    }
+
+    produtosCarrinho = produtosCarrinhoSup
+
+    quantidadeCarrinho = quantidadeCarrinhoSup
+
+}
+
+ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido)

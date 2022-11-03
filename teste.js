@@ -317,12 +317,16 @@ Agora devemos criar funções para um “carrinho de compras” para utilizar ju
 funções anteriores, esse carrinho de compras deve guardar duas informações: o id do
 produto e a quantidade deste produto ;
 
+
+
 1. Crie uma função para adicionar produtos no carrinho, você deve passar o nome do
 produto e a quantidade que deseja adicionar como parâmetro. Essa função deve
 verificar primeiro se já existe esse produto no carrinho, se existir apenas adicione a
 quantidade, se não adicione o produto e a quantidade;
 */
 
+
+var precosCarrinho = []
 var quantidadeCarrinho = []
 var produtosCarrinho = []
 var indexCarrinho = 0
@@ -331,6 +335,13 @@ var nomesCarrinho = prompt("Insira o nome do produto que deseja adicionar no car
 var quantidadeProdutos = parseInt(prompt("Insira a quantidade do produto que deseja adicionar no carrinho"))
 
 function AdicionarProdutos(nomesCarrinho, quantidadeProdutos) {
+
+
+    for (var contador = 0; contador < precos.length; contador++) {
+        if (nomesCarrinho == nomes[contador]) {
+            precosCarrinho[indexCarrinho] == precos[contador]
+        }
+    }
 
     if (nomesCarrinho == produtosCarrinho[indexCarrinho]) {
 
@@ -342,7 +353,10 @@ function AdicionarProdutos(nomesCarrinho, quantidadeProdutos) {
     }
 
     indexCarrinho++
+
 }
+
+
 AdicionarProdutos(nomesCarrinho, quantidadeProdutos)
 
 /*
@@ -369,17 +383,17 @@ function ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido) {
 
             produtosCarrinho[contador] = 0
 
-        }else if(nomeProdutoExcluido == produtosCarrinho[contador]){
+        } else if (nomeProdutoExcluido == produtosCarrinho[contador]) {
 
             quantidadeCarrinho[contador] = quantidadeCarrinho[contador] - quantidadeProdutoExcluido
 
         }
     }
 
-    for(var contador2 = 0; contador2 < indexCarrinho; contador2++){
+    for (var contador2 = 0; contador2 < indexCarrinho; contador2++) {
 
-        if(produtosCarrinho[contador2] != 0){
-            
+        if (produtosCarrinho[contador2] != 0) {
+
             produtosCarrinhoSup[indexSuporte] = produtosCarrinho[contador2]
 
             quantidadeCarrinhoSup[indexSuporte] = quantidadeCarrinho[contador2]
@@ -400,13 +414,16 @@ ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido)
 
 //3. Crie uma função que retorne o valor total de todos os produtos no carrinho;
 
-var precosCarrinho = []
+
 var valorTotal
 
-function RetornarValor(){
-    for(var contador = 0; contador < indexCarrinho; contador++){
-        valorTotal = valorTotal + precos[contador]
+function RetornarValor() {
+    for (var contador = 0; contador < indexCarrinho; contador++) {
+        valorTotal = valorTotal + (precosCarrinho[contador] * quantidadeCarrinho[contador])
+
+
     }
+    console.log(valorTotal)
 }
 
 

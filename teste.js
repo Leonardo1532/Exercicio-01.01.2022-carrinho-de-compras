@@ -312,12 +312,12 @@ while (continuar == "s") {
     }
 }
 
+
+
 /*
 Agora devemos criar funções para um “carrinho de compras” para utilizar junto com as
 funções anteriores, esse carrinho de compras deve guardar duas informações: o id do
 produto e a quantidade deste produto ;
-
-
 
 1. Crie uma função para adicionar produtos no carrinho, você deve passar o nome do
 produto e a quantidade que deseja adicionar como parâmetro. Essa função deve
@@ -331,15 +331,14 @@ var quantidadeCarrinho = []
 var produtosCarrinho = []
 var indexCarrinho = 0
 
-var nomesCarrinho = prompt("Insira o nome do produto que deseja adicionar no carrinho")
-var quantidadeProdutos = parseInt(prompt("Insira a quantidade do produto que deseja adicionar no carrinho"))
+
 
 function AdicionarProdutos(nomesCarrinho, quantidadeProdutos) {
 
 
     for (var contador = 0; contador < precos.length; contador++) {
         if (nomesCarrinho == nomes[contador]) {
-            precosCarrinho[indexCarrinho] == precos[contador]
+            precosCarrinho[indexCarrinho] = precos[contador]
         }
     }
 
@@ -356,9 +355,6 @@ function AdicionarProdutos(nomesCarrinho, quantidadeProdutos) {
 
 }
 
-
-AdicionarProdutos(nomesCarrinho, quantidadeProdutos)
-
 /*
 2. Crie uma função para excluir um produto do carrinho, essa função deve receber o
 nome do produto e a quantidade que deseja excluir como parâmetro. Se a
@@ -370,8 +366,7 @@ var quantidadeCarrinhoSup = []
 var produtosCarrinhoSup = []
 var indexSuporte = 0
 
-var nomeProdutoExcluido = prompt("Insira o nome do produto para ser excluido")
-var quantidadeProdutoExcluido = prompt("Insira a quantidade do produto para ser excluido")
+
 
 function ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido) {
 
@@ -409,30 +404,62 @@ function ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido) {
 
 }
 
-ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido)
-
-
 //3. Crie uma função que retorne o valor total de todos os produtos no carrinho;
 
-
-var valorTotal
+var valorTotal = 0
 
 function RetornarValor() {
     for (var contador = 0; contador < indexCarrinho; contador++) {
         valorTotal = valorTotal + (precosCarrinho[contador] * quantidadeCarrinho[contador])
 
-
     }
-    console.log(valorTotal)
+    return valorTotal
 }
-
-
-
-
-
-
 
 /*
 4. Crie uma função que exiba todos os produtos do carrinho e o valor total de todos os
 produtos;
 */
+
+function Exibir() {
+    for (var contador = 0; contador < indexCarrinho; contador++) {
+        console.log("Os produtos são: " + produtosCarrinho[contador])
+        console.log("O valor total dos produtos é: " + RetornarValor())
+    }
+}
+
+
+
+var retornar = "s"
+
+while (retornar == "s") {
+
+    var opcao = prompt("Insira a opção desejada! Adicionar um Produto no carrinho(1), Excluir um produto do carrinho(2), Exibir os produtos e o valor de todos os produtos do Carrinho(3)")
+
+    if (opcao == 1) {
+        var nomesCarrinho = prompt("Insira o nome do produto que deseja adicionar no carrinho")
+
+        var quantidadeProdutos = parseInt(prompt("Insira a quantidade do produto que deseja adicionar no carrinho"))
+
+        AdicionarProdutos(nomesCarrinho, quantidadeProdutos)
+
+        console.log('Produto adicionado no carrinho')
+        
+    } else if (opcao == 2) {
+
+        var nomeProdutoExcluido = prompt("Insira o nome do produto para ser excluido")
+
+        var quantidadeProdutoExcluido = prompt("Insira a quantidade do produto para ser excluido")
+
+        ExcluirProduto(nomeProdutoExcluido, quantidadeProdutoExcluido)
+
+        console.log("Produto excluido do carrinho")
+    } else if (opcao == 3) {
+        Exibir()
+    }
+
+    var desejaContinuar = prompt("Deseja continuar fazendo execuções? s ou n")
+    if (desejaContinuar != "s") {
+        retornar = "n"
+    }
+}
